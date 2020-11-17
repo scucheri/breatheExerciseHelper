@@ -1,0 +1,53 @@
+<resources>
+
+    <string name="app_name">Test</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activityB">ActivityB</string>
+    
+    <string name="start">开始</string>
+    <string name="stop">停止</string>
+    <string name="connect">连接</string>
+    <string name="disconnect">断开</string>
+    <string name="connecting">正在连接……</string>
+    <string name="disconnecting">正在断开……</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="sure_to_exit">是否确认退出？</string>
+		    
+    <!--GraphView OperationMenu Dialog-->
+	    <string name="graphview_menu_title">图形窗口操作</string>
+	    <string-array name="graphview_menu">
+	        <item>返回原点</item>
+	        <item>等比显示</item>
+	        <item>清除图形</item>
+	    </string-array>
+	    
+	<!--BTHOperation Activity-->
+	    <string name="title_activity_bthoperation">搜寻蓝牙设备</string>
+	    <string name="bth_turned_on">蓝牙已开启</string>
+	    <string name="bth_turned_off">蓝牙已关闭</string>
+	    <string name="bth_turning_on">正在开启蓝牙适配器……</string>
+	    <string name="bth_turning_off">正在关闭蓝牙适配器……</string>
+	    <string name="bth_scan">扫描设备</string>
+	    <string name="bth_cancle_scanning">取消扫描</string>
+	    <string name="bth_is_scanning">正在扫描附近的蓝牙设备……</string>
+	    <string name="bth_rescanning">重新扫描</string>
+	    <string name="bth_found">已发现的蓝牙设备：</string>
+	    <string name="bth_adapter_notfound">未发现蓝牙适配器</string>
+	    <string name="bth_bond_none">未配对</string>
+	    <string name="bth_bond_bonding">正在配对……</string>
+	    <string name="bth_bond_bonded">已配对</string>
+	    <string name="bond_operation">配对操作</string>
+	    <string-array name="bond_none_menu">
+	        <item>建立配对</item>
+	    </string-array>
+	    <string-array name="bond_bonding_menu">
+	        <item>取消配对</item>
+	    </string-array>
+	    <string-array name="bond_bonded_menu">
+	        <item>删除配对</item>
+	        <item>连接</item>
+	    </string-array>
+
+</resources>
