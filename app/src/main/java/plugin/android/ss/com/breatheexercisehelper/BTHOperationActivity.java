@@ -21,13 +21,12 @@ import android.view.View.OnClickListener;
 import android.widget.*;
 import android.app.AlertDialog;
 
-
 /**
- * 蓝牙操作界面Activity
+ * ������������Activity
  */
 public class BTHOperationActivity  extends ListActivity
 {
-	// 控件
+	// �ؼ�
 	private TextView textViewBTHSwitch = null;
 	private ProgressBar progressBarBTHSwitch = null;
 	private ToggleButton toggleBTHSwitch = null;
@@ -35,13 +34,13 @@ public class BTHOperationActivity  extends ListActivity
 	private ProgressBar progressBarBTHScan = null;
 	private Button buttonBTHScan = null;
 	
-	// 蓝牙适配器 
+	// ���������� 
 	private BluetoothAdapter bluetoothAdapter = null;
 	
-	// 设备列表 
+	// �豸�б� 
 	private List<BluetoothDevice> deviceList = null;
 	
-	// 当前选中的蓝牙设备
+	// ��ǰѡ�е������豸
 	private BluetoothDevice deviceSelected = null;
 
 	protected void onCreate(Bundle savedInstanceState)
@@ -49,7 +48,7 @@ public class BTHOperationActivity  extends ListActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search_bth);
 		
-		// 获取控件
+		// ��ȡ�ؼ�
 		textViewBTHSwitch = (TextView)findViewById(R.id.textviewBTHSwitch);
 		progressBarBTHSwitch = (ProgressBar)findViewById(R.id.progressBarBTHSwitch);
 		toggleBTHSwitch = (ToggleButton)findViewById(R.id.toggleButtonBTHSwitch);
@@ -59,7 +58,7 @@ public class BTHOperationActivity  extends ListActivity
 		
 		deviceList = new ArrayList<BluetoothDevice>();
 
-		// 获取蓝牙适配器
+		// ��ȡ����������
 		bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 		if (null == bluetoothAdapter)
 		{
@@ -67,7 +66,7 @@ public class BTHOperationActivity  extends ListActivity
 			return;
 		}
 		
-		// 设置控件
+		// ���ÿؼ�
 		if (bluetoothAdapter.isEnabled())
 		{
 			toggleBTHSwitch.setChecked(true);
@@ -78,7 +77,7 @@ public class BTHOperationActivity  extends ListActivity
 			buttonBTHScan.setEnabled(true);
 			textViewBTHScan.setText(R.string.bth_is_scanning);
 			progressBarBTHScan.setVisibility(View.VISIBLE);
-			// 自动开始扫描
+			// �Զ���ʼɨ��
 			if (!bluetoothAdapter.isDiscovering())
 			{
 				bluetoothAdapter.startDiscovery();
@@ -93,17 +92,17 @@ public class BTHOperationActivity  extends ListActivity
 			textViewBTHScan.setText("");
 			progressBarBTHScan.setVisibility(View.INVISIBLE);
 			
-			bluetoothAdapter.enable(); // 若蓝牙关闭，则自动开启
+			bluetoothAdapter.enable(); // �������رգ����Զ�����
 			textViewBTHSwitch.setText(R.string.bth_turning_on);
 			progressBarBTHSwitch.setVisibility(View.VISIBLE);
 		}
 		
-		setListener(); // 设置监听器
-		registerBroadcastReceiver(); // 注册广播接收器
+		setListener(); // ���ü�����
+		registerBroadcastReceiver(); // ע��㲥������
 	}
 
 	/**
-	 * 设置监听器
+	 * ���ü�����
 	 */
 	private void setListener()
 	{
@@ -111,7 +110,7 @@ public class BTHOperationActivity  extends ListActivity
 		{
 			public void onClick(View v)
 			{
-				BTHOperationActivity.this.toggleBTHSwitch.toggle(); // 这里先将toggle按钮状态设回原先的，由蓝牙广播根据蓝牙开关状态来设置toggle按钮状态
+				BTHOperationActivity.this.toggleBTHSwitch.toggle(); // �����Ƚ�toggle��ť״̬���ԭ�ȵģ��������㲥������������״̬������toggle��ť״̬
 				
 				if (bluetoothAdapter.isEnabled())
 				{
@@ -156,11 +155,11 @@ public class BTHOperationActivity  extends ListActivity
 	}
 	
 	/**
-	 * 注册各类接收器
+	 * ע����������
 	 */
 	private void registerBroadcastReceiver()
 	{
-		// 本地蓝牙适配器状态改变
+		// ��������������״̬�ı�
 		registerReceiver(new BroadcastReceiver()
 		{
 			public void onReceive(Context context, Intent intent)
@@ -181,7 +180,7 @@ public class BTHOperationActivity  extends ListActivity
 					progressBarBTHSwitch.setVisibility(View.INVISIBLE);
 					buttonBTHScan.setBackgroundResource(R.drawable.ic_refresh);
 					buttonBTHScan.setEnabled(true);
-					// 自动开始扫描
+					// �Զ���ʼɨ��
 					if (!bluetoothAdapter.isDiscovering())
 					{
 						bluetoothAdapter.startDiscovery();
@@ -199,7 +198,7 @@ public class BTHOperationActivity  extends ListActivity
 			}
 		}, new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED));
 		
-		// 设备扫描开始
+		// �豸ɨ�迪ʼ
 		registerReceiver(new BroadcastReceiver()
 		{
 			public void onReceive(Context context, Intent intent)
@@ -210,7 +209,7 @@ public class BTHOperationActivity  extends ListActivity
 			}
 		}, new IntentFilter(BluetoothAdapter.ACTION_DISCOVERY_STARTED));
 		
-		// 设备扫描完成
+		// �豸ɨ�����
 		registerReceiver(new BroadcastReceiver()
 		{
 			public void onReceive(Context context, Intent intent)
@@ -221,18 +220,18 @@ public class BTHOperationActivity  extends ListActivity
 			}
 		}, new IntentFilter(BluetoothAdapter.ACTION_DISCOVERY_FINISHED));
 		
-		// 发现设备
+		// �����豸
 		registerReceiver(new BroadcastReceiver()
 		{
 			public void onReceive(Context context, Intent intent)
 			{
 				BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-				deviceList.add(device); // 将新发现的设备添加到设备列表中
-				showDeviceList(); // 更新设备列表显示
+				deviceList.add(device); // ���·��ֵ��豸��ӵ��豸�б���
+				showDeviceList(); // �����豸�б���ʾ
 			}
 		}, new IntentFilter(BluetoothDevice.ACTION_FOUND));
 		
-		// 配对请求
+		// �������
 		registerReceiver(new BroadcastReceiver()
 		{
 			public void onReceive(Context context, Intent intent)
@@ -240,7 +239,7 @@ public class BTHOperationActivity  extends ListActivity
 			}
 		}, new IntentFilter("android.bluetooth.device.action.PAIRING_REQUEST"));
 		
-		// 配对状态改变
+		// ���״̬�ı�
 		registerReceiver(new BroadcastReceiver()
 		{
 			public void onReceive(Context context, Intent intent)
@@ -251,13 +250,13 @@ public class BTHOperationActivity  extends ListActivity
 	}
 	
 	/**
-	 * 响应list选择
+	 * ��Ӧlistѡ��
 	 */
 	protected void onListItemClick(ListView l, View v, int position, long id)
 	{
 		deviceSelected = deviceList.get(position);
 
-		// 根据配对状态加载不同的菜单项
+		// �������״̬���ز�ͬ�Ĳ˵���
 		int bondmenuitem = 0;
 		switch (deviceSelected.getBondState())
 		{
@@ -272,12 +271,12 @@ public class BTHOperationActivity  extends ListActivity
 			break;
 		}
 
-		// 设置弹出式对话框，进行配对操作
+		// ���õ���ʽ�Ի��򣬽�����Բ���
 		AlertDialog.Builder menubuilder = new AlertDialog.Builder(this).setTitle(deviceSelected.getName() + getString(R.string.bond_operation)).setItems(bondmenuitem, new DialogInterface.OnClickListener()
         {
         	public void onClick(DialogInterface dialog, int which)
         	{
-        		BTHOperationActivity.this.bondMenuItemSelect(which); // 直接调用SearchBTHActivity的BondMenuItemSelect
+        		BTHOperationActivity.this.bondMenuItemSelect(which); // ֱ�ӵ���SearchBTHActivity��BondMenuItemSelect
         	}
         });
         
@@ -287,9 +286,9 @@ public class BTHOperationActivity  extends ListActivity
 	}
 	
 	/**
-	 * 根据选择的菜单进行配对操作
+	 * ����ѡ��Ĳ˵�������Բ���
 	 * 
-	 * @param itemid 项ID
+	 * @param itemid ��ID
 	 */
 	private void bondMenuItemSelect(int itemid)
 	{
@@ -331,9 +330,9 @@ public class BTHOperationActivity  extends ListActivity
 	}
 	
 	/**
-	 * 连接蓝牙设备
+	 * ���������豸
 	 * 
-	 * @param device 蓝牙设备
+	 * @param device �����豸
 	 */
 	private void connectDevice(BluetoothDevice device)
 	{
@@ -344,7 +343,7 @@ public class BTHOperationActivity  extends ListActivity
 	}
 	
 	/**
-	 * 显示设备列表
+	 * ��ʾ�豸�б�
 	 */
 	private void showDeviceList()
 	{
@@ -352,7 +351,7 @@ public class BTHOperationActivity  extends ListActivity
 		{
 			public void run()
 			{
-				int [] bondstatestringid = {R.string.bth_bond_none, R.string.bth_bond_bonding, R.string.bth_bond_bonded}; // 配对状态字符串资源
+				int [] bondstatestringid = {R.string.bth_bond_none, R.string.bth_bond_bonding, R.string.bth_bond_bonded}; // ���״̬�ַ�����Դ
 				
 				List<Map<String, Object>> devicelist = new ArrayList<Map<String, Object>>();;
 				Map<String, Object> map = null;

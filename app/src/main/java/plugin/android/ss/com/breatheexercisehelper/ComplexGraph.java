@@ -26,6 +26,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.pm.ActivityInfo;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 
@@ -43,12 +44,12 @@ public class ComplexGraph extends LinearLayout
 	private Button buttonFullScreen = null;
 	private Button buttonLock = null;
 	private SeekBar seekBarX = null;
-	private VerticalSeekBar seekBarY = null;
+	//private VerticalSeekBar seekBarY = null;
 	
 	private PopupWindow mPopupWindow = null; // PopupWindow����ʵ��ȫ��Ч��
 	
 	private boolean isFullScreen = false; // �Ƿ�ȫ����־
-	private boolean isLock = true; // �Ƿ������������ű�־
+	private boolean isLock = false; // �Ƿ������������ű�־
 	
 	private boolean enableGraphViewSingleTouch = true; // graphView���㴥��ʹ�ܣ����ڷ�ֹԤ����Ĳ�������Scale������ͬʱ����LongPress����
 	
@@ -147,7 +148,7 @@ public class ComplexGraph extends LinearLayout
 						ComplexGraph.this.buttonFullScreen.setVisibility(View.VISIBLE + View.INVISIBLE - ComplexGraph.this.buttonFullScreen.getVisibility());
 		        		ComplexGraph.this.buttonLock.setVisibility(View.VISIBLE + View.INVISIBLE - ComplexGraph.this.buttonLock.getVisibility());
 		        		ComplexGraph.this.seekBarX.setVisibility(View.VISIBLE + View.INVISIBLE - ComplexGraph.this.seekBarX.getVisibility());
-		        		ComplexGraph.this.seekBarY.setVisibility(View.VISIBLE + View.INVISIBLE - ComplexGraph.this.seekBarY.getVisibility());
+		        	//	ComplexGraph.this.seekBarY.setVisibility(View.VISIBLE + View.INVISIBLE - ComplexGraph.this.seekBarY.getVisibility());
 					}
 					else
 					{
@@ -246,13 +247,13 @@ public class ComplexGraph extends LinearLayout
 		rl = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
 		rl.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
 		rl.addRule(RelativeLayout.ABOVE, buttonLock.getId());
-		seekBarY = new VerticalSeekBar(c);
-		seekBarY.setLayoutParams(rl);
+	//	seekBarY = new VerticalSeekBar(c);
+		//seekBarY.setLayoutParams(rl);
 		
 		mRelativeLayout.addView(buttonFullScreen);
 		mRelativeLayout.addView(buttonLock);
 		mRelativeLayout.addView(seekBarX);
-		mRelativeLayout.addView(seekBarY);
+		//mRelativeLayout.addView(seekBarY);
 		
 		// ���пؼ��������һ����Բ����У����������ComplexGraph����������ʵ��ȫ��Ч��
 		addView(mRelativeLayout, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
@@ -260,8 +261,8 @@ public class ComplexGraph extends LinearLayout
 		// �����ؼ���ʼ��Ϊ���ɼ�
 		buttonFullScreen.setVisibility(View.INVISIBLE);
 		buttonLock.setVisibility(View.INVISIBLE);
-		seekBarX.setVisibility(View.INVISIBLE);
-		seekBarY.setVisibility(View.INVISIBLE);
+		seekBarX.setVisibility(View.VISIBLE);
+		//seekBarY.setVisibility(View.INVISIBLE);
 		
 		buttonFullScreen.setBackgroundResource(R.drawable.ic_full_screen);
 		buttonFullScreen.setOnClickListener(new View.OnClickListener()
@@ -282,24 +283,24 @@ public class ComplexGraph extends LinearLayout
         	}
 		});
 		
-		buttonLock.setBackgroundResource(R.drawable.ic_lock);
-		buttonLock.setOnClickListener(new View.OnClickListener()
-		{
-			@Override
-			public void onClick(View arg0)
-        	{
-        		if (ComplexGraph.this.isLock)
-        		{
-        			buttonLock.setBackgroundResource(R.drawable.ic_unlock);
-        			ComplexGraph.this.isLock = false;
-        		}
-        		else
-        		{
-        			buttonLock.setBackgroundResource(R.drawable.ic_lock);
-        			ComplexGraph.this.isLock = true;
-        		}
-        	}
-		});
+//		buttonLock.setBackgroundResource(R.drawable.ic_lock);
+//		buttonLock.setOnClickListener(new View.OnClickListener()
+//		{
+//			@Override
+//			public void onClick(View arg0)
+//        	{
+//        		if (ComplexGraph.this.isLock)
+//        		{
+//        			buttonLock.setBackgroundResource(R.drawable.ic_unlock);
+//        			ComplexGraph.this.isLock = false;
+//        		}
+//        		else
+//        		{
+//        			buttonLock.setBackgroundResource(R.drawable.ic_lock);
+//        			ComplexGraph.this.isLock = true;
+//        		}
+//        	}
+//		});
 		
 		seekBarX.setMax(1000);
 		seekBarX.setProgress(seekBarX.getMax()/2);
@@ -316,9 +317,9 @@ public class ComplexGraph extends LinearLayout
         			
         			if (ComplexGraph.this.isLock)
         			{
-            			// �����������������ͬʱ����Y��
-        				axis = Zoom.ZOOM_AXIS_XY;
-        				seekBarY.setProgress(progress);
+            			// ������������������ͬʱ����Y��
+        				//axis = Zoom.ZOOM_AXIS_XY;
+        			//	seekBarY.setProgress(progress);
         			}
         			
         			// ���м�Ϊ׼������λ��ȷ����С�Ŵ�������
@@ -348,60 +349,60 @@ public class ComplexGraph extends LinearLayout
 			{
 				// �������Ų�����ص��м�λ��
 				seekBarX.setProgress(seekBarX.getMax()/2);
-				seekBarY.setProgress(seekBarY.getMax()/2);
+//				seekBarY.setProgress(seekBarY.getMax()/2);
 			}
 		});
 		
-		seekBarY.setMax(1000);
-		seekBarY.setProgress(seekBarY.getMax()/2);
-		seekBarY.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
-		{
-			@Override
-			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
-        	{
-        		if (fromUser)
-        		{
-        			int axis = Zoom.ZOOM_AXIS_Y;
-        			int half = seekBarY.getMax()/2;
-        			int distance = progress - half;
-        			
-        			if (ComplexGraph.this.isLock)
-        			{
-        				// �����������������ͬʱ����X��
-        				axis = Zoom.ZOOM_AXIS_XY;
-        				seekBarX.setProgress(progress);
-        			}
-        			
-        			// ���м�Ϊ׼������λ��ȷ����С�Ŵ�������
-        			if (distance > 0)
-        			{
-        				// λ��Ϊ��(����)����Ŵ�
-        				ComplexGraph.this.mZoomIn.setZoomRate(distance * (MAX_ZOOM_RATE - 1) / half + 1);
-        				ComplexGraph.this.mZoomIn.apply(axis);
-        			}
-        			if (distance < 0)
-        			{
-        				// λ��Ϊ��(����)������С
-        				ComplexGraph.this.mZoomOut.setZoomRate(-distance * (MAX_ZOOM_RATE - 1) / half + 1);
-        				ComplexGraph.this.mZoomOut.apply(axis);
-        			}
-        			
-            		ComplexGraph.this.rePaintGraph();
-        		}
-        	}
-
-			@Override
-			public void onStartTrackingTouch(SeekBar seekBar)
-			{}
-
-			@Override
-			public void onStopTrackingTouch(SeekBar seekBar)
-			{
-				// �������Ų�����ص��м�λ��
-				seekBarX.setProgress(seekBarX.getMax()/2);
-				seekBarY.setProgress(seekBarY.getMax()/2);
-			}
-		});
+//		seekBarY.setMax(1000);
+//		seekBarY.setProgress(seekBarY.getMax()/2);
+//		seekBarY.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+//		{
+//			@Override
+//			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
+//        	{
+//        		if (fromUser)
+//        		{
+//        			int axis = Zoom.ZOOM_AXIS_Y;
+//        			int half = seekBarY.getMax()/2;
+//        			int distance = progress - half;
+//        			
+//        			if (ComplexGraph.this.isLock)
+//        			{
+//        				// ������������������ͬʱ����X��
+//        				axis = Zoom.ZOOM_AXIS_XY;
+//        				seekBarX.setProgress(progress);
+//        			}
+//        			
+//        			// ���м�Ϊ׼������λ��ȷ����С�Ŵ�������
+//        			if (distance > 0)
+//        			{
+//        				// λ��Ϊ��(����)����Ŵ�
+//        				ComplexGraph.this.mZoomIn.setZoomRate(distance * (MAX_ZOOM_RATE - 1) / half + 1);
+//        				ComplexGraph.this.mZoomIn.apply(axis);
+//        			}
+//        			if (distance < 0)
+//        			{
+//        				// λ��Ϊ��(����)������С
+//        				ComplexGraph.this.mZoomOut.setZoomRate(-distance * (MAX_ZOOM_RATE - 1) / half + 1);
+//        				ComplexGraph.this.mZoomOut.apply(axis);
+//        			}
+//        			
+//            		ComplexGraph.this.rePaintGraph();
+//        		}
+//        	}
+//
+//			@Override
+//			public void onStartTrackingTouch(SeekBar seekBar)
+//			{}
+//
+//			@Override
+//			public void onStopTrackingTouch(SeekBar seekBar)
+//			{
+//				// �������Ų�����ص��м�λ��
+//				seekBarX.setProgress(seekBarX.getMax()/2);
+//				seekBarY.setProgress(seekBarY.getMax()/2);
+//			}
+//		});
 	}
 	
 	/**
@@ -592,7 +593,7 @@ public class ComplexGraph extends LinearLayout
 			miny = 0;
 		}
 		
-		for (int i = 1; i < count ; i++)
+		for (int i = 1; i < count; i++)
 		{
 			miny = Math.min(miny, mDataset.getSeriesAt(i).getMinY());
 		}
@@ -636,9 +637,111 @@ public class ComplexGraph extends LinearLayout
 		}
 	//	mRenderer.setRange(new double[]{getMinX() - margin, getMaxX() + margin, getMinY() - margin, getMaxY() + margin});
 //		mRenderer.setRange(new double[]{getMinX() - margin, 100+ margin, getMinY() - margin, getMaxY() + margin});
-		mRenderer.setRange(new double[]{getMinX() - margin, getMaxX() + margin, getMinY() - margin, 2.5});
+		
+		
+		
+		if(getMaxY()<=20)
+		{
+		mRenderer.setRange(new double[]{getMinX() - margin, getMaxX() + margin,  getMinY()- margin,  20 + margin});    
+		}
+		
+		else if((getMaxY()>20)&&(getMaxY()<=30))
+		{
+			mRenderer.setRange(new double[]{getMinX() - margin, getMaxX() + margin, getMinY() - margin,  30 + margin});    	
+			
+		}
+		
+		else if((getMaxY()>30)&&(getMaxY()<=40))
+		{
+			mRenderer.setRange(new double[]{getMinX() - margin, getMaxX() + margin, getMinY() - margin,  40 + margin});    	
+			
+		}
+		else if((getMaxY()>40)&&(getMaxY()<=50))
+		{
+			mRenderer.setRange(new double[]{getMinX() - margin, getMaxX() + margin, getMinY() - margin,  50 + margin});    	
+			
+		}
+		else if((getMaxY()>50)&&(getMaxY()<=65))
+		{
+			mRenderer.setRange(new double[]{getMinX() - margin, getMaxX() + margin, getMinY() - margin,  65 + margin});    	
+			
+		}
+		else if((getMaxY()>65)&&(getMaxY()<=80))
+		{
+			mRenderer.setRange(new double[]{getMinX() - margin, getMaxX() + margin, getMinY() - margin,  80 + margin});    	
+			
+		}
+		else if((getMaxY()>80)&&(getMaxY()<=100))
+		{
+			mRenderer.setRange(new double[]{getMinX() - margin, getMaxX() + margin,  getMinY()- margin,  100 + margin});    	
+			
+		}
+		else 
+		{
+			mRenderer.setRange(new double[]{getMinX() - margin, getMaxX() + margin, getMinY() - margin,  getMaxY() + margin}); 	
+		}
 		rePaintGraph();
 	}
+	
+	
+	
+	
+//	public void mainActivity_FitGraph(double singalPosition ) {
+//		// TODO Auto-generated method stub
+//		
+//		double margin = Math.min((getMaxX() - getMinX()) / 500, (getMaxY() - singalPosition) / 500);
+//		if (margin <= 0)
+//		{
+//			margin = 0.001;
+//		}
+//	//	mRenderer.setRange(new double[]{getMinX() - margin, getMaxX() + margin, singalPosition - margin, getMaxY() + margin});
+////		mRenderer.setRange(new double[]{getMinX() - margin, 100+ margin, singalPosition - margin, getMaxY() + margin});
+//		
+//		
+//		
+//		if(getMaxY()<=20)
+//		{
+//		mRenderer.setRange(new double[]{getMinX() - margin, getMaxX() + margin,  singalPosition- margin,  20 + margin});    
+//		}
+//		
+//		else if((getMaxY()>20)&&(getMaxY()<=30))
+//		{
+//			mRenderer.setRange(new double[]{getMinX() - margin, getMaxX() + margin, singalPosition - margin,  30 + margin});    	
+//			
+//		}
+//		
+//		else if((getMaxY()>30)&&(getMaxY()<=40))
+//		{
+//			mRenderer.setRange(new double[]{getMinX() - margin, getMaxX() + margin, singalPosition - margin,  40 + margin});    	
+//			
+//		}
+//		else if((getMaxY()>40)&&(getMaxY()<=50))
+//		{
+//			mRenderer.setRange(new double[]{getMinX() - margin, getMaxX() + margin, singalPosition - margin,  50 + margin});    	
+//			
+//		}
+//		else if((getMaxY()>50)&&(getMaxY()<=65))
+//		{
+//			mRenderer.setRange(new double[]{getMinX() - margin, getMaxX() + margin, singalPosition - margin,  65 + margin});    	
+//			
+//		}
+//		else if((getMaxY()>65)&&(getMaxY()<=80))
+//		{
+//			mRenderer.setRange(new double[]{getMinX() - margin, getMaxX() + margin, singalPosition - margin,  80 + margin});    	
+//			
+//		}
+//		else if((getMaxY()>80)&&(getMaxY()<=100))
+//		{
+//			mRenderer.setRange(new double[]{getMinX() - margin, getMaxX() + margin,  singalPosition- margin,  100 + margin});    	
+//			
+//		}
+//		else 
+//		{
+//			mRenderer.setRange(new double[]{getMinX() - margin, getMaxX() + margin, singalPosition - margin,  getMaxY() + margin}); 	
+//		}
+//		rePaintGraph();
+//		
+//	}
 	
 	/**
      * �ȱ���ʾ��X����Y�����ű�������Ϊ��ͬ
@@ -995,4 +1098,13 @@ public class ComplexGraph extends LinearLayout
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public double getStantardPosition()
+	{
+		
+		return MainActivity.stantardPosition;
+		
+	}
+
+	
 }

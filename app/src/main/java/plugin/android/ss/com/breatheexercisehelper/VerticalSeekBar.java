@@ -7,18 +7,18 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 
 /**
- * 垂直SeekBar类
+ * ��ֱSeekBar��
  */
 public class VerticalSeekBar extends SeekBar
 {
-	private OnSeekBarChangeListener mOnSeekBarChangeListener; // SeekBar改变监听器
+	private OnSeekBarChangeListener mOnSeekBarChangeListener; // SeekBar�ı������
 	
-	private int padCorrect = 32; // 边缘留白校正
+	private int padCorrect = 32; // ��Ե����У��
 	
 	/**
-	 * 构造函数
+	 * ���캯��
 	 * 
-	 * @param context 上下文环境
+	 * @param context �����Ļ���
 	 */
 	public VerticalSeekBar(Context context)
 	{
@@ -26,8 +26,8 @@ public class VerticalSeekBar extends SeekBar
 	}
 	
 	/**
-	 * 构造函数
-	 * 使用xml文件布局控件时自动调用
+	 * ���캯��
+	 * ʹ��xml�ļ����ֿؼ�ʱ�Զ�����
 	 */
 	public VerticalSeekBar(Context context,AttributeSet attrs)
 	{
@@ -35,8 +35,8 @@ public class VerticalSeekBar extends SeekBar
 	}
 	
 	/**
-	 * 构造函数
-	 * 使用xml文件布局控件时自动调用
+	 * ���캯��
+	 * ʹ��xml�ļ����ֿؼ�ʱ�Զ�����
 	 */
 	public VerticalSeekBar(Context context, AttributeSet attrs, int defStyle)
 	{
@@ -44,7 +44,7 @@ public class VerticalSeekBar extends SeekBar
 	}
 	
 	/**
-	 * 设置SeekBar改变监听器
+	 * ����SeekBar�ı������
 	 */
 	public void setOnSeekBarChangeListener(OnSeekBarChangeListener l)
 	{

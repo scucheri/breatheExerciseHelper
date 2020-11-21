@@ -1,8 +1,8 @@
 <resources>
 
-    <string name="app_name">Test</string>
+    <string name="app_name">趣味呼吸操</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">趣味呼吸操</string>
     <string name="title_activityB">ActivityB</string>
     
     <string name="start">开始</string>
@@ -49,5 +49,25 @@
 	        <item>删除配对</item>
 	        <item>连接</item>
 	    </string-array>
+	    <string name="stantardFrequency">标准呼吸频率</string>
+	    <string name="stantardRatio">呼气时间/吸气时间（标准）</string>
+	    <string name="stantardPosition">标准曲线位置</string>
+	    <string name="stantardIntensity">标准呼吸强度</string>
+	    <string name="set">设置</string>
+	    <string name="displayTime">显示时间宽度(s)</string>
+	    <string name="sampleTime">采样间隔</string>
+	    <string name="maxHaleFrequency">最大呼吸频率</string>
+	    <string name="minHaleIntensity">最小呼吸强度</string>
+	    <string name="stantardSet">标准波形设置：</string>
+	    <string name="abnormalLimitSet">异常判断标准设置：</string>
+	    <string name="signalSet">信号显示设置：</string>
+	    <string name="UpdatePower">电量更新</string>
+	    <string name="pleaseConnectDevice">请连接设备</string>
+	    <string name="lowScore">成绩有点差，需要不断努力哦！</string>
+	    <string name="highScore">太棒啦，您是我的偶像！</string>
+	    <string name="normalScore">革命尚未成功，同志还需努力！</string>
+	    <string name="magnifyN">放大倍数</string>
+	    <string name="QueryData">查询</string>
+	    <string name="signalPosition">信号基线位置</string>
 
 </resources>

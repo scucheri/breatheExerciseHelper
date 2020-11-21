@@ -1,0 +1,257 @@
+
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+    
+<RelativeLayout
+    android:layout_width="110dp"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/stantardSet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/signalSet"
+        android:layout_marginTop="18dp"
+        android:text="@string/stantardSet"
+        android:textSize="18dip" />
+
+    <TextView
+        android:id="@+id/signalSet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/stantardSet"
+        android:layout_marginTop="174dp"
+        android:text="@string/signalSet"
+        android:textSize="18dip" />
+
+    <TextView
+        android:id="@+id/abnormalLimitSet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/signalSet"
+        android:layout_below="@+id/signalSet"
+        android:layout_marginTop="142dp"
+        android:text="@string/abnormalLimitSet"
+        android:textSize="18dip" />
+
+</RelativeLayout>
+
+<RelativeLayout 
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+ 
+    tools:context=".MainActivity" >
+
+    
+    <TextView
+        android:id="@+id/stantardIntensity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="24dp"
+        android:text="@string/stantardIntensity" 
+         android:textSize="15dip"/>
+
+    <EditText
+        android:id="@+id/stantardIntensityData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/stantardIntensity"
+        android:layout_marginLeft="30dp"
+        android:layout_toRightOf="@+id/stantardIntensity"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/stantardFrequency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/stantardIntensityData"
+        android:layout_marginTop="30dp"
+        android:text="@string/stantardFrequency"
+         android:textSize="15dip" />
+
+    <EditText
+        android:id="@+id/stantardFrequencyData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/stantardFrequency"
+        android:layout_alignBottom="@+id/stantardFrequency"
+        android:layout_alignLeft="@+id/stantardIntensityData"
+        android:ems="10" />stantardFrequency
+
+    <TextView
+        android:id="@+id/stantardRatio"
+        android:layout_width="100dip"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/stantardFrequencyData"
+        android:layout_marginTop="28dp"
+        android:text="@string/stantardRatio"
+         android:textSize="15dip" />
+
+    <EditText
+        android:id="@+id/stantardRatioData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/stantardFrequencyData"
+        android:layout_alignTop="@+id/stantardRatio"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/stantardPosition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/stantardRatioData"
+        android:layout_marginTop="28dp"
+        android:text="@string/stantardPosition" 
+         android:textSize="15dip"/>
+
+    <EditText
+        android:id="@+id/stantardPositionData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/stantardPosition"
+        android:layout_alignBottom="@+id/stantardPosition"
+        android:layout_alignLeft="@+id/stantardRatioData"
+        android:ems="10" />
+    
+     <TextView
+        android:id="@+id/displayTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/stantardPositionData"
+        android:layout_marginTop="28dp"
+        android:text="@string/displayTime" 
+         android:textSize="15dip"/>
+
+    <EditText
+        android:id="@+id/displayTimeData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/displayTime"
+        android:layout_alignBottom="@+id/displayTime"
+        android:layout_alignLeft="@+id/stantardRatioData"
+        android:ems="10" />
+    
+     <TextView
+        android:id="@+id/sampleTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/displayTimeData"
+        android:layout_marginTop="28dp"
+        android:text="@string/sampleTime" 
+         android:textSize="15dip"/>
+
+    <EditText
+        android:id="@+id/sampleTimeData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/sampleTime"
+        android:layout_alignBottom="@+id/sampleTime"
+        android:layout_alignLeft="@+id/stantardRatioData"
+        android:ems="10" />
+    
+     <TextView
+        android:id="@+id/magnifyN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/sampleTimeData"
+        android:layout_marginTop="28dp"
+        android:text="@string/magnifyN" 
+         android:textSize="15dip"/>
+
+    <EditText
+        android:id="@+id/magnifyNData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/magnifyN"
+        android:layout_alignBottom="@+id/magnifyN"
+        android:layout_alignLeft="@+id/stantardRatioData"
+        android:ems="10" />
+    
+    <TextView
+        android:id="@+id/signalPosition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/magnifyNData"
+        android:layout_marginTop="28dp"
+        android:text="@string/signalPosition" 
+         android:textSize="15dip"/>
+
+    <EditText
+        android:id="@+id/signalPositionData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/signalPosition"
+        android:layout_alignBottom="@+id/signalPosition"
+        android:layout_alignLeft="@+id/stantardRatioData"
+        android:ems="10" />
+    
+    
+     <TextView
+        android:id="@+id/maxHaleFrequency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/signalPosition"
+        android:layout_marginTop="28dp"
+        android:text="@string/maxHaleFrequency" 
+         android:textSize="15dip"/>
+
+    <EditText
+        android:id="@+id/maxHaleFrequencyData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/maxHaleFrequency"
+        android:layout_alignBottom="@+id/maxHaleFrequency"
+        android:layout_alignLeft="@+id/stantardRatioData"
+        android:ems="10" />
+    
+    <TextView
+        android:id="@+id/minHaleIntensity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/maxHaleFrequency"
+        android:layout_marginTop="28dp"
+        android:text="@string/minHaleIntensity" 
+         android:textSize="15dip"/>
+
+    <EditText
+        android:id="@+id/minHaleIntensityData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/minHaleIntensity"
+        android:layout_alignBottom="@+id/minHaleIntensity"
+        android:layout_alignLeft="@+id/stantardRatioData"
+        android:ems="10" />
+
+    <Button
+        android:id="@+id/setButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/displayTimeData"
+        android:layout_marginTop="238dp"
+        android:text="@string/ok" />
+
+</RelativeLayout>
+
+</LinearLayout>
