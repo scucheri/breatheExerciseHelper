@@ -1,0 +1,26 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  
+     <item android:id="@+id/set"  
+          android:title="@string/set"  
+          android:visible="true"/> 
+          
+       <item android:id="@+id/updatePower"  
+          android:title="@string/UpdatePower"  
+          android:visible="true"/> 
+          
+         <item android:id="@+id/queryData"  
+          android:title="@string/QueryData"  
+          android:visible="true"/> 
+      
+    
+    <item android:id="@+id/playMusic"  
+          android:title="@string/startMusic"  
+          android:visible="true" /> 
+           
+    <item android:id="@+id/stopMusic"  
+          android:title="@string/stopMusic"  
+          android:visible="true"/> 
+          
+    
+     
+</menu>

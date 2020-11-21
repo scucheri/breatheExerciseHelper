@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	style="@style/layout_full"
+	android:orientation="vertical">
+	<LinearLayout 
+		style="@style/layout_vertical"
+		android:layout_weight="7"
+		android:orientation="horizontal">
+	 	
+	     <plugin.android.ss.com.breatheexercisehelper.ComplexGraph
+            android:id="@+id/graphicView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp" />
+	</LinearLayout> 
+	
+	
+		<LinearLayout 
+		style="@style/layout_vertical"
+		android:layout_weight="1"
+		android:orientation="horizontal">
+	 	
+	     <TextView
+	         	style="@style/layout_horizontal"
+                 android:id="@+id/inhaleTimeView"
+                   android:textSize="18dip"
+                   android:layout_weight="4"/>	
+                   
+		  
+	 	
+	 	   <TextView
+	         	style="@style/layout_horizontal"
+                 android:id="@+id/haleIntensityView"
+                   android:textSize="18dip"
+                   android:layout_weight="4"/>	
+	</LinearLayout> 
+	
+	
+		<LinearLayout 
+		style="@style/layout_vertical"
+		android:layout_weight="1"
+		android:orientation="horizontal">
+	 	
+	     <TextView
+	         	style="@style/layout_horizontal"
+                 android:id="@+id/exhaleTimeView"
+                  android:textSize="18dip"
+                   android:layout_weight="4"/>	
+          
+	 	   <TextView
+	         	style="@style/layout_horizontal"
+                 android:id="@+id/haleFrequencyView"
+                  android:textSize="18dip"
+                   android:layout_weight="4"/>	
+	</LinearLayout> 
+	
+		
+	
+	<LinearLayout 
+		style="@style/layout_vertical"
+		android:layout_weight="1"
+		android:orientation="horizontal">
+	 	
+	     <TextView
+	         	style="@style/layout_horizontal"
+                 android:id="@+id/haleRatioView"
+                  android:textSize="18dip"
+                   android:layout_weight="4"/>	
+	</LinearLayout> 
+	
+	
+	
+	<LinearLayout 
+		style="@style/layout_vertical"
+		android:layout_weight="1"
+		android:orientation="horizontal">
+	 	
+	     <TextView
+	         	style="@style/layout_horizontal"
+                 android:id="@+id/scoreView"
+                  android:textSize="18dip"
+                   android:layout_weight="4"/>	
+                   
+		  
+	 	   <TextView
+	         	style="@style/layout_horizontal"
+                 android:id="@+id/SOCView"
+                  android:textSize="18dip"
+                   android:layout_weight="4"/>	
+	</LinearLayout> 
+	
+	
+	
+	<LinearLayout 
+		style="@style/layout_vertical"
+		android:layout_weight="1"
+		android:orientation="horizontal">
+	 	
+	      <Button
+                 android:id="@+id/buttonConnect"
+                 android:text="@string/connect" 
+                  android:textSize="18dip"
+                	style="@style/layout_horizontal"
+	 	         	android:layout_weight="1"/>	
+	      
+
+             <Chronometer
+                 android:id="@+id/testTime"
+                 android:gravity="center_horizontal"
+                 android:textColor="#ff0000"
+                 android:textSize="20dip"
+                style="@style/layout_horizontal"
+	 	        android:layout_weight="2"/>	
+	</LinearLayout> 
+	
+</LinearLayout>

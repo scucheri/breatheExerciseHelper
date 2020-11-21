@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	style="@style/layout_full"
+	android:orientation="horizontal">
+	
+    
+   <LinearLayout 
+		style="@style/layout_horizontal"
+		android:layout_weight="4"
+		android:orientation="vertical">
+		
+       
+       	
+	     <plugin.android.ss.com.breatheexercisehelper.ComplexGraph
+            android:id="@+id/haleDataView"
+              style="@style/layout_vertical"
+            android:layout_margin="10dp"
+            	 android:layout_weight="4"/>	 
+	     
+	     
+	       <plugin.android.ss.com.breatheexercisehelper.ComplexGraph
+            android:id="@+id/abnormalDataView"
+              style="@style/layout_vertical"
+            android:layout_margin="10dp"
+            	 android:layout_weight="4"/>	
+	</LinearLayout>
+	
+	</LinearLayout>

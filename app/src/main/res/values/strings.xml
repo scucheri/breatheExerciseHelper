@@ -53,8 +53,8 @@
 	    <string name="stantardRatio">呼气时间/吸气时间（标准）</string>
 	    <string name="stantardPosition">标准曲线位置</string>
 	    <string name="stantardIntensity">标准呼吸强度</string>
-	    <string name="set">设置</string>
-	    <string name="displayTime">显示时间宽度(s)</string>
+	    <string name="set">标准设置</string>
+	    <string name="displayPeriod">显示周期数</string>
 	    <string name="sampleTime">采样间隔</string>
 	    <string name="maxHaleFrequency">最大呼吸频率</string>
 	    <string name="minHaleIntensity">最小呼吸强度</string>
@@ -67,7 +67,10 @@
 	    <string name="highScore">太棒啦，您是我的偶像！</string>
 	    <string name="normalScore">革命尚未成功，同志还需努力！</string>
 	    <string name="magnifyN">放大倍数</string>
-	    <string name="QueryData">查询</string>
+	    <string name="QueryData">历史数据</string>
 	    <string name="signalPosition">信号基线位置</string>
+	    <string name="startMusic">播放音乐</string>
+	    <string name="stopMusic">停止音乐</string>
+	    <string name="pleaseReOpenTheApp">连接设备前不能播放音乐，请重启本应用后直接连接</string>
 
 </resources>

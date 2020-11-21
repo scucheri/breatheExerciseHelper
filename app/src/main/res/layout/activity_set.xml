@@ -135,7 +135,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/stantardPositionData"
         android:layout_marginTop="28dp"
-        android:text="@string/displayTime" 
+        android:text="展示时间"
          android:textSize="15dip"/>
 
     <EditText
